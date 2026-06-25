@@ -1,0 +1,58 @@
+@media (max-width: 760px) {
+  .header-content {
+    flex-wrap: wrap;
+  }
+
+  .header-avatars {
+    order: 3;
+    width: 100%;
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  .header-actions {
+    margin-left: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .logged-user span {
+    display: none;
+  }
+
+  .logged-user {
+    padding: 0 8px;
+  }
+
+  .logged-user .initials-avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-card {
+    border-radius: 20px 20px 0 0;
+    max-height: 92dvh;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    padding: 0 12px;
+  }
+
+  .comment-input-area {
+    padding: 14px 16px;
+  }
+}

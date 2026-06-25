@@ -1,0 +1,43 @@
+.feed-container {
+  max-width: 736px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.empty-modal,
+.empty-feed {
+  padding: 48px 24px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--muted-foreground);
+}
+
+.empty-feed div {
+  width: 80px;
+  height: 80px;
+  background: var(--accent);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-feed h2 {
+  margin: 0;
+  color: var(--foreground);
+}
+
+.empty-feed p {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}

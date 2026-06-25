@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap");
+
+:root {
+  --background: #faf6f1;
+  --card: #ffffff;
+  --foreground: #211914;
+  --muted: #f0e8de;
+  --muted-foreground: #8b6f5d;
+  --border: #e6ddd5;
+  --input: #f3ebe2;
+  --primary: #e85d1c;
+  --primary-light: #f4b999;
+  --primary-foreground: #ffffff;
+  --accent: #fff0e6;
+  --shadow: 0 16px 50px rgba(33, 25, 20, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Nunito", Arial, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.loading-text {
+  text-align: center;
+  color: var(--muted-foreground);
+}
+
+.tag {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.tag-filhote {
+  background: #e7f0ff;
+  color: #1d6fe8;
+}
+
+.tag-adulto {
+  background: #dcf8e8;
+  color: #159447;
+}
+
+.tag-idoso {
+  background: #fff0e6;
+  color: #e85d1c;
+}
+
+/* Avatar com iniciais da pessoa */
+.initials-avatar {
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.initials-avatar-sm {
+  width: 22px;
+  height: 22px;
+  font-size: 10px;
+}
+
+.initials-avatar-md {
+  width: 34px;
+  height: 34px;
+  font-size: 13px;
+}
+
+.initials-avatar-lg {
+  width: 86px;
+  height: 86px;
+  font-size: 28px;
+  border: 4px solid var(--accent);
+}

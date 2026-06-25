@@ -1,0 +1,145 @@
+.comments-area {
+  border-top: 1px solid var(--border);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--card);
+}
+
+.comments-area h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.empty-comments {
+  margin: 0;
+  text-align: center;
+  color: var(--muted-foreground);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+}
+
+.comment {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* Caso ainda exista algum comentário usando imagem antiga */
+.comment > img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Avatar com iniciais no comentário */
+.comment > .initials-avatar {
+  width: 34px;
+  height: 34px;
+  font-size: 13px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  flex-shrink: 0;
+}
+
+.comment-bubble {
+  background: var(--muted);
+  border-radius: 18px;
+  border-top-left-radius: 6px;
+  padding: 10px 14px;
+  max-width: 100%;
+}
+
+.comment-bubble strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: var(--foreground);
+}
+
+.comment-bubble p {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--foreground);
+  word-break: break-word;
+}
+
+.comment small {
+  display: block;
+  margin: 5px 0 0 8px;
+  color: var(--muted-foreground);
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+}
+
+.comment-input-area {
+  border-top: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  background: var(--card);
+}
+
+/* Imagem antiga, placeholder ou avatar de iniciais */
+.comment-input-area > img,
+.comment-user-placeholder,
+.comment-input-area > .initials-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Avatar com iniciais do usuário logado no campo de comentário */
+.comment-input-area > .initials-avatar {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.comment-input {
+  flex: 1;
+  min-width: 0;
+  background: var(--muted);
+  border-radius: 18px;
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comment-input input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: var(--foreground);
+}
+
+.comment-input input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.comment-input svg {
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}

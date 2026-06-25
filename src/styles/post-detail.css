@@ -1,0 +1,80 @@
+.detail-pet {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-pet > img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+}
+
+.detail-pet-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-pet small {
+  color: var(--muted-foreground);
+  font-family: "Inter", sans-serif;
+}
+
+.detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-body {
+  overflow-y: auto;
+}
+
+.detail-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--muted);
+}
+
+.detail-content {
+  padding: 22px 24px;
+}
+
+.detail-content h2 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.detail-content p {
+  margin: 0 0 16px;
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  color: rgba(33, 25, 20, 0.82);
+}
+
+.detail-stats {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--muted-foreground);
+}
+
+.detail-stats button,
+.detail-stats span {
+  border: none;
+  background: transparent;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+}
+
+.detail-stats small {
+  margin-left: auto;
+}

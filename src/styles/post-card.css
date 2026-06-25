@@ -1,0 +1,108 @@
+.post-card {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: left;
+  transition: 0.2s;
+  padding: 0;
+  display: block;
+  color: inherit;
+}
+
+.post-card:hover {
+  border-color: rgba(232, 93, 28, 0.35);
+  box-shadow: 0 8px 28px rgba(33, 25, 20, 0.12);
+  transform: translateY(-2px);
+}
+
+.post-image-area {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--muted);
+  overflow: hidden;
+}
+
+.post-image-area > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.post-card:hover .post-image-area > img {
+  transform: scale(1.05);
+}
+
+.pet-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  padding: 4px 10px 4px 4px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  max-width: calc(100% - 24px);
+}
+
+.pet-badge img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.pet-badge strong {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.post-content {
+  padding: 16px;
+}
+
+.post-content h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.post-content p {
+  margin: 0 0 14px;
+  color: var(--muted-foreground);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-content footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+
+.post-content footer span,
+.post-content footer strong {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.post-content footer strong {
+  margin-left: auto;
+  color: var(--primary);
+}
