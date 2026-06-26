@@ -423,7 +423,7 @@ VITE_API_URL=
 Exemplo para ambiente local:
 
 ```env
-VITE_API_URL=http://localhost:3333
+VITE_API_URL=http://localhost:3000
 ```
 
 Exemplo para ambiente em produção:
