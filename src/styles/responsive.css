@@ -1,3 +1,244 @@
+/* =========================
+   HEADER
+========================= */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgb(252, 252, 252);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-avatars {
+  display: none;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+}
+
+.header-avatars img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--background);
+  margin-left: -4px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logged-user {
+  height: 36px;
+  padding: 0 12px 0 8px;
+  border-radius: 18px;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.logged-user .initials-avatar {
+  width: 22px;
+  height: 22px;
+  font-size: 10px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.logged-user span {
+  max-width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: #111827;
+  letter-spacing: -0.025em;
+  margin-right: 570px;
+}
+
+.logo-highlight {
+  color: #0d9488;
+}
+
+/* =========================
+   FEED / POSTS
+========================= */
+
+.feed-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+/* Notebook/Desktop: 3 itens por linha */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.empty-modal,
+.empty-feed {
+  padding: 48px 24px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--muted-foreground);
+}
+
+.empty-feed div {
+  width: 80px;
+  height: 80px;
+  background: var(--accent);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-feed h2 {
+  margin: 0;
+  color: var(--foreground);
+}
+
+.empty-feed p {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .feed-container {
+    max-width: 736px;
+  }
+
+  .posts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .header-content {
+    max-width: 736px;
+  }
+
+  .logo-text {
+    margin-right: auto;
+    font-size: 1.15rem;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+}
+
+/* =========================
+   CELULAR / MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .feed-container {
+    max-width: 100%;
+    padding: 24px 12px;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .header-content {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .brand {
+    gap: 8px;
+    font-size: 16px;
+  }
+
+  .brand-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+  }
+
+  .logo-text {
+    margin-right: 0;
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .logged-user {
+    height: 32px;
+    padding: 0 8px;
+  }
+
+  .logged-user span {
+    display: none;
+  }
+
+  .logged-user .initials-avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+}
+
+/* =========================
+   RESPONSIVIDADE GERAL
+========================= */
+
 @media (max-width: 760px) {
   .header-content {
     flex-wrap: wrap;
@@ -28,12 +269,6 @@
     width: 24px;
     height: 24px;
     font-size: 10px;
-  }
-
-  .posts-grid {
-    display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
   }
 
   .modal-overlay {
