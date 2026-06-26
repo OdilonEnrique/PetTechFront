@@ -78,3 +78,28 @@
 .detail-stats small {
   margin-left: auto;
 }
+
+.detail-like-button {
+  border: none;
+  background: transparent;
+  color: var(--muted-foreground);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 0;
+}
+
+.detail-like-button:hover {
+  color: #e02424;
+}
+
+.detail-like-button.liked {
+  color: #e02424;
+}
+
+.detail-like-button:disabled {
+  cursor: default;
+  opacity: 1;
+}

@@ -18,6 +18,8 @@ type ModalType = "none" | "pessoa" | "animal" | "post";
 export default function App() {
   const [modal, setModal] = useState<ModalType>("none");
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [likedPosts, setLikedPosts] = useState<Record<number, boolean>>({});
+  const [localLikes, setLocalLikes] = useState<Record<number, number>>({});
 
   const { pessoa: currentPessoa, savePessoa } = useCurrentPessoa();
 
@@ -31,6 +33,29 @@ export default function App() {
 
   function findAnimalByPost(post: Post) {
     return post.animal ?? animais.find((animal) => animal.id === post.animalId);
+  }
+
+  function handlePostLiked(postId: number, likes: number) {
+    setLikedPosts((prev) => ({
+      ...prev,
+      [postId]: true,
+    }));
+
+    setLocalLikes((prev) => ({
+      ...prev,
+      [postId]: likes,
+    }));
+
+    setSelectedPost((prev) => {
+      if (!prev || prev.id !== postId) {
+        return prev;
+      }
+
+      return {
+        ...prev,
+        likes,
+      };
+    });
   }
 
   return (
@@ -53,9 +78,18 @@ export default function App() {
             {posts.map((post) => (
               <PostCard
                 key={post.id}
-                post={post}
+                post={{
+                  ...post,
+                  likes: localLikes[post.id] ?? post.likes ?? 0,
+                }}
                 animal={findAnimalByPost(post)}
-                onOpen={() => setSelectedPost(post)}
+                isLiked={likedPosts[post.id] ?? false}
+                onOpen={() =>
+                  setSelectedPost({
+                    ...post,
+                    likes: localLikes[post.id] ?? post.likes ?? 0,
+                  })
+                }
               />
             ))}
           </section>
@@ -84,6 +118,7 @@ export default function App() {
           currentPessoa={currentPessoa}
           onClose={() => setSelectedPost(null)}
           onNeedRegister={() => setModal("pessoa")}
+          onPostLiked={handlePostLiked}
         />
       )}
     </div>

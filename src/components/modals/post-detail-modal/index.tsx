@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Droplets,
   Heart,
@@ -31,6 +31,7 @@ type PostDetailModalProps = {
   currentPessoa: Pessoa | null;
   onClose: () => void;
   onNeedRegister: () => void;
+  onPostLiked?: (postId: number, likes: number) => void;
 };
 
 function getPessoaInitials(nome?: string | null) {
@@ -65,9 +66,17 @@ export function PostDetailModal({
   currentPessoa,
   onClose,
   onNeedRegister,
+  onPostLiked,
 }: PostDetailModalProps) {
   const [texto, setTexto] = useState("");
   const [showCuidados, setShowCuidados] = useState(false);
+
+  const [likes, setLikes] = useState(post.likes ?? 0);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const likedPostsStorageKey = currentPessoa
+    ? `pettech-liked-posts-pessoa-${currentPessoa.id}`
+    : null;
 
   const { data: comentariosData = [] } = useListComentariosByPost({
     postId: post.id,
@@ -77,6 +86,92 @@ export function PostDetailModal({
 
   const { mutateAsync: createComentario, isPending } = useCreateComentario();
   const { mutateAsync: curtirPost } = useCurtirPost();
+
+  useEffect(() => {
+    setLikes(post.likes ?? 0);
+
+    if (!likedPostsStorageKey) {
+      setIsLiked(false);
+      return;
+    }
+
+    const savedLikedPosts = localStorage.getItem(likedPostsStorageKey);
+
+    if (!savedLikedPosts) {
+      setIsLiked(false);
+      return;
+    }
+
+    try {
+      const parsedLikedPosts = JSON.parse(savedLikedPosts) as Record<
+        number,
+        boolean
+      >;
+
+      setIsLiked(parsedLikedPosts[post.id] ?? false);
+    } catch {
+      setIsLiked(false);
+    }
+  }, [post.id, post.likes, likedPostsStorageKey]);
+
+  function saveLikedPostOnStorage(postId: number) {
+    if (!likedPostsStorageKey) {
+      return;
+    }
+
+    const savedLikedPosts = localStorage.getItem(likedPostsStorageKey);
+
+    let parsedLikedPosts: Record<number, boolean> = {};
+
+    if (savedLikedPosts) {
+      try {
+        parsedLikedPosts = JSON.parse(savedLikedPosts) as Record<
+          number,
+          boolean
+        >;
+      } catch {
+        parsedLikedPosts = {};
+      }
+    }
+
+    const nextLikedPosts = {
+      ...parsedLikedPosts,
+      [postId]: true,
+    };
+
+    localStorage.setItem(likedPostsStorageKey, JSON.stringify(nextLikedPosts));
+  }
+
+  function removeLikedPostFromStorage(postId: number) {
+    if (!likedPostsStorageKey) {
+      return;
+    }
+
+    const savedLikedPosts = localStorage.getItem(likedPostsStorageKey);
+
+    if (!savedLikedPosts) {
+      return;
+    }
+
+    try {
+      const parsedLikedPosts = JSON.parse(savedLikedPosts) as Record<
+        number,
+        boolean
+      >;
+
+      const nextLikedPosts = {
+        ...parsedLikedPosts,
+        [postId]: false,
+      };
+
+      localStorage.setItem(
+        likedPostsStorageKey,
+        JSON.stringify(nextLikedPosts),
+      );
+    } catch {
+      localStorage.removeItem(likedPostsStorageKey);
+    }
+  }
 
   async function handleSendComment() {
     if (!texto.trim()) return;
@@ -96,9 +191,38 @@ export function PostDetailModal({
   }
 
   async function handleLike() {
-    await curtirPost({
-      id: post.id,
-    } as never);
+    if (!currentPessoa) {
+      onNeedRegister();
+      return;
+    }
+
+    if (!likedPostsStorageKey) {
+      onNeedRegister();
+      return;
+    }
+
+    if (isLiked) {
+      return;
+    }
+
+    const previousLikes = likes;
+    const nextLikes = previousLikes + 1;
+
+    setIsLiked(true);
+    setLikes(nextLikes);
+    saveLikedPostOnStorage(post.id);
+    onPostLiked?.(post.id, nextLikes);
+
+    try {
+      await curtirPost({
+        id: post.id,
+      } as never);
+    } catch {
+      setIsLiked(false);
+      setLikes(previousLikes);
+      removeLikedPostFromStorage(post.id);
+      onPostLiked?.(post.id, previousLikes);
+    }
   }
 
   return (
@@ -187,9 +311,19 @@ export function PostDetailModal({
           <p>{post.conteudo}</p>
 
           <div className="detail-stats">
-            <button type="button" onClick={handleLike}>
-              <Heart size={16} />
-              {post.likes ?? 0}
+            <button
+              type="button"
+              onClick={handleLike}
+              disabled={isLiked}
+              className={`detail-like-button ${isLiked ? "liked" : ""}`}
+              style={{
+                color: isLiked ? "#e02424" : undefined,
+                cursor: isLiked ? "default" : "pointer",
+                opacity: 1,
+              }}
+            >
+              <Heart size={16} fill={isLiked ? "currentColor" : "none"} />
+              {likes}
             </button>
 
             <span>

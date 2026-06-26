@@ -106,3 +106,13 @@
   margin-left: auto;
   color: var(--primary);
 }
+
+.post-like-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.post-like-info.liked {
+  color: #e02424;
+}
