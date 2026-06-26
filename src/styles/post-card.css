@@ -12,7 +12,7 @@
 }
 
 .post-card:hover {
-  border-color: rgba(232, 93, 28, 0.35);
+  border-color: rgba(28, 232, 184, 0.35);
   box-shadow: 0 8px 28px rgba(33, 25, 20, 0.12);
   transform: translateY(-2px);
 }

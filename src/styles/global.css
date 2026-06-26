@@ -1,18 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap");
 
 :root {
-  --background: #faf6f1;
+  --background: #ececec;
   --card: #ffffff;
-  --foreground: #211914;
-  --muted: #f0e8de;
-  --muted-foreground: #8b6f5d;
-  --border: #e6ddd5;
-  --input: #f3ebe2;
-  --primary: #e85d1c;
-  --primary-light: #f4b999;
+  --foreground: #14211d;
+  --muted: #ececec;
+  --muted-foreground: #777777;
+  --border: #def0ec;
+  --input: #ffffff;
+  --primary: #0d9488;
+  --primary-light: #0d9488;
   --primary-foreground: #ffffff;
-  --accent: #fff0e6;
-  --shadow: 0 16px 50px rgba(33, 25, 20, 0.2);
+  --accent: #e6fffb;
+  --shadow: 0 16px 50px rgba(20, 33, 27, 0.2);
 }
 
 * {

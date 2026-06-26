@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(250, 246, 241, 0.9);
+  background: rgb(252, 252, 252);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -84,4 +84,16 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.25rem; /* text-xl */
+  line-height: 1.75rem;
+  color: #111827; /* text-gray-900 */
+  letter-spacing: -0.025em; /* tracking-tight */
+}
+
+.logo-highlight {
+  color: #0d9488; /* text-teal-600 */
 }

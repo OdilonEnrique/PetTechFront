@@ -40,7 +40,9 @@ export function Header({
             <PawPrint size={17} />
           </div>
 
-          <strong>PetPost</strong>
+          <span className="logo-text">
+            Pet<span className="logo-highlight">Tech</span>
+          </span>
         </div>
 
         <div className="header-avatars">
