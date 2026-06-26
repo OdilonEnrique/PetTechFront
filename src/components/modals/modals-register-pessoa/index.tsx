@@ -35,7 +35,7 @@ export function RegisterPessoaModal({
   }
 
   return (
-    <Modal onClose={onClose} size="small">
+    <Modal zIndex={9999} onClose={onClose} size="small">
       <div className="modal-header">
         <div className="modal-title">
           <User size={18} />
