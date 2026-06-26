@@ -347,7 +347,13 @@ Cada comentário é vinculado a:
 
 ## Sistema de Curtidas
 
-Permite que o usuário curta uma publicação, atualizando a quantidade de curtidas exibida na interface.
+Permite que uma pessoa cadastrada curta uma publicação.
+
+Para realizar a curtida, o frontend verifica se existe uma pessoa salva no `localStorage`. Caso não exista, o usuário é orientado a realizar o cadastro antes de interagir com o post.
+
+Quando o usuário curte um post, o ícone de coração e o número de curtidas são atualizados visualmente, destacando a interação na interface.
+
+A curtida também pode ser realizada tanto no card do post quanto na modal de detalhamento da publicação.
 
 ---
 
